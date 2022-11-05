@@ -1,0 +1,24 @@
+{
+  "name": "layout-tester",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "seveibar <seveibar@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "next dev",
+    "build:openapi": "nextlove generate-openapi --packageDir . --outputFile public/openapi.json --pathGlob '/src/pages/api/**/*.ts'"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.2",
+    "@types/react": "^18.0.25",
+    "esbuild-register": "^3.3.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4",
+    "zapatos": "^6.1.1"
+  },
+  "dependencies": {
+    "better-sqlite3": "^7.6.2",
+    "kysely": "^0.22.0",
+    "nextlove": "^0.2.6"
+  }
+}
