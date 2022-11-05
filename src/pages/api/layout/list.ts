@@ -1,4 +1,4 @@
-import { withRouteSpec } from "lib/with-route-spec"
+import { withRouteSpec } from "lib/middleware"
 import { z } from "zod"
 
 export default withRouteSpec({
@@ -19,13 +19,15 @@ export default withRouteSpec({
 } as const)(async (req, res) => {
   let query = req.db.selectFrom("layout").selectAll()
 
-  const layout_group_name =
-    req.query?.layout_group_name ?? req.body?.layout_group_name
+  const { layout_group_name } = req.commonParams
   if (layout_group_name) {
     query = query.where("layout_group_name", "=", layout_group_name)
   }
 
-  const layouts = await query.execute()
+  const layouts = (await query.execute()).map((layout) => ({
+    ...layout,
+    layout: JSON.parse(layout.layout),
+  }))
 
   res.status(200).json({ layouts })
 })

@@ -12,12 +12,10 @@ import {
 } from "kysely"
 
 interface LayoutTable {
-  layout_id: string
-
   layout_name: string
   layout_group_name: string
 
-  layout: Object
+  layout: string // JSON type is string in sqlite
 }
 
 interface Database {
