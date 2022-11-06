@@ -19,6 +19,7 @@ export default () => {
             }>
           }>
       ),
+    refetchInterval: 500,
   })
 
   let [selected_layout_index, setSelectedLayoutInd] = useState<

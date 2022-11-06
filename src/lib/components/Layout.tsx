@@ -16,7 +16,7 @@ const defaultTransform = compose(
   identity(),
   // flipY(),
   translate(400, 300),
-  scale(20, 20)
+  scale(40, 40)
 )
 
 /**

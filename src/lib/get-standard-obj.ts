@@ -17,6 +17,19 @@ export const getStandardObj = (
     ...(lo as any).center,
     ...(lo as any).position,
   }
+
+  if (
+    lo.x1 !== undefined &&
+    lo.x2 !== undefined &&
+    lo.y1 !== undefined &&
+    lo.y2 !== undefined
+  ) {
+    x = (lo.x1 + lo.x2) / 2
+    y = (lo.y1 + lo.y2) / 2
+    width = Math.abs(lo.x1 - lo.x2)
+    height = Math.abs(lo.y1 - lo.y2)
+  }
+
   const title = lo.text || lo.name || lo.source?.text || lo.source?.name || "?"
   const content = lo
 
