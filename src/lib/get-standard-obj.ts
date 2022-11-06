@@ -26,7 +26,7 @@ export const getStandardObj = (lo: any): StandardObject | null => {
     }
   }
 
-  if (width === undefined) {
+  if (width === undefined || height === undefined) {
     width = 0.1
     height = 0.1
   }
