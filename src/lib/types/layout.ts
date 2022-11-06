@@ -28,6 +28,7 @@ export type StandardObject = {
   y: number
   width: number
   height: number
+  bg_color: string
   title: string
   content: Object
 }

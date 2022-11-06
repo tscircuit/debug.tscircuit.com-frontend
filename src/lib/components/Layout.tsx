@@ -10,6 +10,7 @@ import {
   compose,
   flipY,
 } from "transformation-matrix"
+import LayoutObject from "./LayoutObject"
 
 const defaultTransform = compose(
   identity(),
@@ -29,28 +30,9 @@ export default ({ layout }: { layout: Layout }) => {
           .map((obj) => getStandardObj(obj))
           .filter(Boolean)
           .map((obj) => applyTransform(obj as any, transform))
-          .map((obj, i) => {
-            const style: any = {
-              position: "absolute",
-              backgroundColor: "#f00",
-              color: "#fff",
-              fontFamily: "sans-serif",
-              fontSize: 12,
-              textAlign: "center",
-            }
-
-            style.left = obj.x
-            style.top = obj.y
-            style.height = obj.height
-            style.width = obj.width
-
-            return (
-              <div key={i} style={style}>
-                {obj.title}
-              </div>
-              // <pre>{JSON.stringify(obj, null, 2)}</pre>
-            )
-          })}
+          .map((obj, i) => (
+            <LayoutObject obj={obj} key={i} />
+          ))}
       </div>
       <details style={{ marginTop: 20 }}>
         <summary>Layout JSON</summary>

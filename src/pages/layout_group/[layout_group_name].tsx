@@ -20,7 +20,14 @@ export default () => {
           }>
       ),
   })
-  let [selected_layout_index, setSelectedLayoutInd] = useState(0)
+
+  let [selected_layout_index, setSelectedLayoutInd] = useState<
+    number | undefined
+  >(undefined)
+
+  if (selected_layout_index === undefined) {
+    selected_layout_index = parseInt(router.asPath.split("#")?.[1]) || 0
+  }
 
   if (isLoading) return "loading"
   if (!layouts) return "error no layouts"
@@ -32,9 +39,11 @@ export default () => {
       <div>
         {layouts.map((layout, i) => (
           <button
+            disabled={i === selected_layout_index}
             style={{ marginRight: 10 }}
             key={layout.layout_name}
             onClick={() => {
+              window.location.hash = i.toString()
               setSelectedLayoutInd(i)
             }}
           >

@@ -1,4 +1,6 @@
 import type { LayoutObject, StandardObject } from "./types"
+import colors from "nice-color-palettes"
+import stringHash from "@sindresorhus/string-hash"
 
 export const getStandardObj = (lo: any): StandardObject | null => {
   const {
@@ -10,6 +12,7 @@ export const getStandardObj = (lo: any): StandardObject | null => {
     ...lo,
     ...lo.size,
     ...lo.center,
+    ...lo.position,
   }
   const title = lo.text || lo.name || lo.source?.text || lo.source?.name || "?"
   const content = lo
@@ -23,5 +26,6 @@ export const getStandardObj = (lo: any): StandardObject | null => {
     height,
     title,
     content,
+    bg_color: colors[stringHash(lo.type || title) % colors.length][4],
   }
 }
