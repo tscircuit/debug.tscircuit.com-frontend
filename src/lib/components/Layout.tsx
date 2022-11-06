@@ -16,22 +16,44 @@ const defaultTransform = compose(
   identity(),
   // flipY(),
   translate(400, 300),
-  scale(100, 100)
+  scale(20, 20)
 )
+
+/**
+ * Type order, if earlier renders ABOVE later elements, meaning things at the
+ * beginning are stacked on top of things at the end.
+ */
+const TYPE_ORDER = ["default", "schematic_box", "schematic_line"]
+const DEFAULT_TYPE_IND = TYPE_ORDER.indexOf("default")
+const getTypeInd = (type: string) => {
+  const ind = TYPE_ORDER.indexOf(type)
+  if (ind === -1) return DEFAULT_TYPE_IND
+  return ind
+}
 
 export default ({ layout }: { layout: Layout }) => {
   const [transform, setTransform] = useState<Matrix>(defaultTransform)
+
+  const layout_objects = [...layout.objects]
+
+  // order based on type order
+  layout_objects.sort((a, b) => {
+    const ai = getTypeInd(a.type)
+    const bi = getTypeInd(b.type)
+    return ai > bi ? -1 : ai === bi ? 0 : 1
+  })
+
   return (
     <div>
       <div
         style={{ position: "relative", backgroundColor: "#eee", height: 600 }}
       >
-        {layout.objects
+        {layout_objects
           .map((obj) => getStandardObj(obj))
           .filter(Boolean)
           .map((obj) => applyTransform(obj as any, transform))
           .map((obj, i) => (
-            <LayoutObject obj={obj} key={i} />
+            <LayoutObject obj={obj} key={`${i}_${JSON.stringify(obj)}`} />
           ))}
       </div>
       <details style={{ marginTop: 20 }}>

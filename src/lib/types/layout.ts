@@ -27,6 +27,7 @@ export type LayoutObject = (
       outer_diameter: number
     }
 ) & {
+  type: string
   text?: string
   name?: string
   // drawing?: { elements: Array<LayoutObject> }

@@ -1,16 +1,25 @@
 import { StandardObject } from "lib/types"
 import { useState } from "react"
+import colorAlpha from "color-alpha"
 
-export default ({ obj }: { obj: StandardObject }) => {
+export default ({
+  obj,
+  onClick,
+}: {
+  obj: StandardObject
+  onClick?: Function
+}) => {
   const [hovering, setHovering] = useState(false)
   const style: any = {
     position: "absolute",
-    backgroundColor: obj.bg_color,
+    backgroundColor: colorAlpha(obj.bg_color, 0.1),
+    opacity: hovering ? 0.5 : 1,
     color: "#fff",
     fontFamily: "sans-serif",
     fontSize: 12,
     textAlign: "center",
-    border: "2px solid rgba(0,0,0,0.5)",
+    border: `2px solid ${obj.bg_color}`,
+    cursor: onClick ? "pointer" : "default",
   }
 
   style.left = obj.x - obj.width / 2
@@ -21,6 +30,7 @@ export default ({ obj }: { obj: StandardObject }) => {
   return (
     <>
       <div
+        onClick={onClick as any}
         style={style}
         onMouseOver={() => setHovering(true)}
         onMouseOut={() => setHovering(false)}
