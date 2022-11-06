@@ -13,30 +13,32 @@ export default ({ obj }: { obj: StandardObject }) => {
     border: "2px solid rgba(0,0,0,0.5)",
   }
 
-  style.left = obj.x
-  style.top = obj.y
+  style.left = obj.x - obj.width / 2
+  style.top = obj.y - obj.height / 2
   style.height = obj.height
   style.width = obj.width
 
-  return [
-    <div
-      style={style}
-      onMouseOver={() => setHovering(true)}
-      onMouseOut={() => setHovering(false)}
-    >
-      <div>{obj.title}</div>
-    </div>,
-    <div
-      style={{
-        left: 0,
-        top: 0,
-        position: "absolute",
-        display: hovering ? "block" : "none",
-        pointerEvents: "none",
-        fontSize: 11,
-      }}
-    >
-      <pre>{JSON.stringify(obj.content, null, 2)}</pre>
-    </div>,
-  ]
+  return (
+    <>
+      <div
+        style={style}
+        onMouseOver={() => setHovering(true)}
+        onMouseOut={() => setHovering(false)}
+      >
+        <div>{obj.title}</div>
+      </div>
+      <div
+        style={{
+          left: 0,
+          top: 0,
+          position: "absolute",
+          display: hovering ? "block" : "none",
+          pointerEvents: "none",
+          fontSize: 11,
+        }}
+      >
+        <pre>{JSON.stringify(obj.content, null, 2)}</pre>
+      </div>
+    </>
+  )
 }

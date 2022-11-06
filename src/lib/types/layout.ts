@@ -22,6 +22,11 @@ export type LayoutObject =
       anchor: "left"
       text: string
     }
+  | {
+      x: number
+      y: number
+      outer_diameter: number
+    }
 
 export type StandardObject = {
   x: number

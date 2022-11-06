@@ -3,11 +3,11 @@ import colors from "nice-color-palettes"
 import stringHash from "@sindresorhus/string-hash"
 
 export const getStandardObj = (lo: any): StandardObject | null => {
-  const {
+  let {
     x,
     y,
-    width = 0.1,
-    height = 0.1,
+    width,
+    height,
   }: { x: number; y: number; width?: number; height?: number } = {
     ...lo,
     ...lo.size,
@@ -18,6 +18,18 @@ export const getStandardObj = (lo: any): StandardObject | null => {
   const content = lo
 
   if (x === undefined || y === undefined) return null
+
+  if (width === undefined) {
+    if (lo.outer_diameter) {
+      width = lo.outer_diameter
+      height = lo.outer_diameter
+    }
+  }
+
+  if (width === undefined) {
+    width = 0.1
+    height = 0.1
+  }
 
   return {
     x,
