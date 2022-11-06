@@ -5,9 +5,8 @@ export interface Layout {
   objects: LayoutObject[]
 }
 
-export type LayoutObject =
+export type LayoutObject = (
   | {
-      text?: string
       x: number
       y: number
       width: number
@@ -27,6 +26,12 @@ export type LayoutObject =
       y: number
       outer_diameter: number
     }
+) & {
+  text?: string
+  name?: string
+  // drawing?: { elements: Array<LayoutObject> }
+  source?: { text?: string; name?: string }
+}
 
 export type StandardObject = {
   x: number
@@ -36,4 +41,5 @@ export type StandardObject = {
   bg_color: string
   title: string
   content: Object
+  secondary?: boolean
 }
