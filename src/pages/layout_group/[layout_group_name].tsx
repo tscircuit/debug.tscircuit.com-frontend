@@ -1,10 +1,19 @@
 import React, { useState } from "react"
 import { useQuery } from "react-query"
 import { useRouter } from "next/router"
-import Layout from "lib/components/Layout"
+import DebugLayout from "lib/components/DebugLayout"
+import { useHashParams } from "lib/hooks/use-hash-params"
+
+const ENGINES = ["debug_renderer", "pcb_renderer", "schematic_renderer"]
 
 export default () => {
   const router = useRouter()
+
+  const [{ selected_engine, selected_layout_index }, updateHashParams] =
+    useHashParams({
+      selected_engine: "debug_renderer",
+      selected_layout_index: 0,
+    })
   const { layout_group_name } = router.query
   const { data: { layouts } = {}, isLoading } = useQuery({
     queryKey: ["layout_group", layout_group_name],
@@ -22,14 +31,6 @@ export default () => {
     refetchInterval: 500,
   })
 
-  let [selected_layout_index, setSelectedLayoutInd] = useState<
-    number | undefined
-  >(undefined)
-
-  if (selected_layout_index === undefined) {
-    selected_layout_index = parseInt(router.asPath.split("#")?.[1]) || 0
-  }
-
   if (isLoading) return "loading"
   if (!layouts) return "error no layouts"
 
@@ -37,22 +38,34 @@ export default () => {
 
   return (
     <div>
-      <div>
+      <div style={{ display: "flex", paddingBottom: 10 }}>
         {layouts.map((layout, i) => (
           <button
             disabled={i === selected_layout_index}
             style={{ marginRight: 10 }}
             key={layout.layout_name}
             onClick={() => {
-              window.location.hash = i.toString()
-              setSelectedLayoutInd(i)
+              updateHashParams({ selected_layout_index: i })
             }}
           >
             {layout.layout_name}
           </button>
         ))}
+        <div style={{ flexGrow: 1 }}></div>
+        {ENGINES.map((engine) => (
+          <button
+            style={{ marginLeft: 10 }}
+            disabled={engine === selected_engine}
+            key={engine}
+            onClick={() => {
+              updateHashParams({ selected_engine: engine })
+            }}
+          >
+            {engine}
+          </button>
+        ))}
       </div>
-      {selected_layout && <Layout layout={selected_layout.layout} />}
+      {selected_layout && <DebugLayout layout={selected_layout.layout} />}
     </div>
   )
 }
