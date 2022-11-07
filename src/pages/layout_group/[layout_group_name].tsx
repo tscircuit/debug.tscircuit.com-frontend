@@ -3,6 +3,7 @@ import { useQuery } from "react-query"
 import { useRouter } from "next/router"
 import DebugLayout from "lib/components/DebugLayout"
 import { useHashParams } from "lib/hooks/use-hash-params"
+import PCBLayout from "lib/components/PCBLayout"
 
 const ENGINES = ["debug_renderer", "pcb_renderer", "schematic_renderer"]
 
@@ -65,7 +66,19 @@ export default () => {
           </button>
         ))}
       </div>
-      {selected_layout && <DebugLayout layout={selected_layout.layout} />}
+      {selected_layout && (
+        <>
+          {selected_engine === "debug_renderer" && (
+            <DebugLayout layout={selected_layout.layout} />
+          )}
+          {selected_engine === "pcb_renderer" && (
+            <PCBLayout layout={selected_layout.layout} />
+          )}
+          {selected_engine === "schematic_renderer" && (
+            <DebugLayout layout={selected_layout.layout} />
+          )}
+        </>
+      )}
     </div>
   )
 }
