@@ -10,21 +10,25 @@ export default withRouteSpec({
     layout: z.any(),
   }),
 } as const)(async (req, res) => {
-  await req.db
-    .insertInto("layout")
-    .values({
-      layout_group_name: req.body.layout_group_name,
-      layout_name: req.body.layout_name,
-      layout: JSON.stringify(req.body.layout),
-    })
-    .onConflict((b) =>
-      b.doUpdateSet({
+  try {
+    await req.db
+      .insertInto("layout")
+      .values({
         layout_group_name: req.body.layout_group_name,
         layout_name: req.body.layout_name,
         layout: JSON.stringify(req.body.layout),
       })
-    )
-    .execute()
+      .onConflict((b) =>
+        b.column("layout_name").doUpdateSet({
+          layout_group_name: req.body.layout_group_name,
+          layout_name: req.body.layout_name,
+          layout: JSON.stringify(req.body.layout),
+        })
+      )
+      .execute()
+  } catch (e) {
+    console.log(e.stack)
+  }
 
   return res.status(200).json({})
 })
