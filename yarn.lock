@@ -133,10 +133,10 @@
   dependencies:
     fast-xml-parser "^4.0.10"
 
-"@tscircuit/pcb-viewer@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@tscircuit/pcb-viewer/-/pcb-viewer-1.0.2.tgz#104a6d72b7701db97b98ae5ff3c8727fce87ec8c"
-  integrity sha512-ISyUHc6Q4sgJty61vR0QsmEwfhiZp0mUuhwzDHf9256/sdREVaJnvCl6fBPhSPaQ9y2LSTjaDrgkuNaPetnhVA==
+"@tscircuit/pcb-viewer@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@tscircuit/pcb-viewer/-/pcb-viewer-1.0.3.tgz#8138a7fc13b382e6a3a5e41d676d34839e1aa9c9"
+  integrity sha512-DEf9fudPtY+t/jP9yvnHLpYKX930VTRGTJY7KxGGHxYrCjlES6gCtff6bZuKEPHNwwXityzaqFeQFMFIGUpv+A==
   dependencies:
     react-dom "^18.2.0"
     transformation-matrix "^2.13.0"
@@ -2140,6 +2140,13 @@ urlencoded-body-parser@^2.0.1:
     media-typer "^0.3.0"
     qs "^6.2.1"
     raw-body "^2.1.7"
+
+use-mouse-matrix-transform@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/use-mouse-matrix-transform/-/use-mouse-matrix-transform-0.0.3.tgz#04a7af341c6ddf90b1b397af68c3585414f9140a"
+  integrity sha512-0jmvNFlkd1WXN48qNfXDst2z+h/eD/JdR3qPEtFNJfX26CuOIOuLsc/eSBrETOjPbUsU6qvZV9Edalb1O5oASA==
+  dependencies:
+    transformation-matrix "^2.14.0"
 
 use-sync-external-store@1.1.0:
   version "1.1.0"
