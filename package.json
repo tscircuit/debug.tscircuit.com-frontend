@@ -12,6 +12,7 @@
     "@tscircuit/builder": "^1.0.10",
     "@tscircuit/react-fiber": "^0.0.4",
     "@types/better-sqlite3": "^7.6.2",
+    "@types/http-proxy": "^1.17.9",
     "@types/react": "^18.0.25",
     "esbuild-register": "^3.3.3",
     "prettier": "^2.7.1",
