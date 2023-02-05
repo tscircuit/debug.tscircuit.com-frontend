@@ -1,4 +1,4 @@
-import { Layout } from "lib/types"
+import { Soup } from "lib/types"
 import { useMeasure } from "react-use"
 import * as PCBViewer from "@tscircuit/pcb-viewer"
 import { identity, compose, scale, translate } from "transformation-matrix"
@@ -7,7 +7,7 @@ import useMouseMatrixTransform from "use-mouse-matrix-transform"
 
 const defaultTransform = compose(translate(400, 300), scale(40, 40))
 
-export default ({ layout }: { layout: Layout }) => {
+export default ({ soup }: { soup: Soup }) => {
   const [ref, refDimensions] = useMeasure()
   const [transform, setTransform] = useState(defaultTransform)
   const { ref: transformRef } = useMouseMatrixTransform({
@@ -19,7 +19,7 @@ export default ({ layout }: { layout: Layout }) => {
       <div ref={ref as any}>
         <PCBViewer.CanvasElementsRenderer
           key={refDimensions.width}
-          elements={layout.objects as any}
+          elements={soup.elements as any}
           transform={transform}
           height={600}
           width={refDimensions.width}

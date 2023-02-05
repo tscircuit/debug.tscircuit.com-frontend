@@ -1,7 +1,7 @@
 import { applyTransform } from "lib/apply-transform"
 import { getStandardObj } from "lib/get-standard-obj"
 import { useMouseMatrixTransform } from "use-mouse-matrix-transform"
-import { Layout } from "lib/types"
+import { Soup } from "lib/types"
 import { useEffect, useRef, useState } from "react"
 import {
   Matrix,
@@ -32,7 +32,7 @@ const getTypeInd = (type: string) => {
   return ind
 }
 
-export default ({ layout }: { layout: Layout }) => {
+export default ({ soup }: { soup: Soup }) => {
   const [transform, setTransform] = useState<Matrix>(defaultTransform)
 
   const { ref } = useMouseMatrixTransform({
@@ -40,7 +40,7 @@ export default ({ layout }: { layout: Layout }) => {
     onSetTransform: setTransform,
   })
 
-  const layout_objects = [...layout.objects]
+  const layout_objects = [...soup.elements]
 
   // order based on type order
   layout_objects.sort((a, b) => {
@@ -78,7 +78,7 @@ export default ({ layout }: { layout: Layout }) => {
       </div>
       <details style={{ marginTop: 20 }}>
         <summary>Layout JSON</summary>
-        <pre>{JSON.stringify(layout, null, 2)}</pre>
+        <pre>{JSON.stringify(soup.elements, null, 2)}</pre>
       </details>
     </div>
   )

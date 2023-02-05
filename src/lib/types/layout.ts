@@ -1,8 +1,8 @@
 /**
  * Generic layout format
  */
-export interface Layout {
-  objects: LayoutObject[]
+export interface Soup {
+  elements: LayoutObject[]
 }
 
 export type LayoutObject = (

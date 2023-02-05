@@ -15,17 +15,17 @@ export default () => {
       selected_engine: "debug_renderer",
       selected_layout_index: 0,
     })
-  const { layout_group_name } = router.query
-  const { data: { layouts } = {}, isLoading } = useQuery({
-    queryKey: ["layout_group", layout_group_name],
+  const { soup_group_name } = router.query
+  const { data: { soups } = {}, isLoading } = useQuery({
+    queryKey: ["soup_group", soup_group_name],
     queryFn: () =>
-      fetch(`/api/layout/list?layout_group_name=${layout_group_name}`).then(
+      fetch(`/api/soup_group/get?soup_group_name=${soup_group_name}`).then(
         (res) =>
           res.json() as Promise<{
-            layouts: Array<{
-              layout_group_name: string
-              layout_name: string
-              layout: any
+            soups: Array<{
+              soup_id: string
+              soup_name: string
+              content: any
             }>
           }>
       ),
@@ -33,23 +33,23 @@ export default () => {
   })
 
   if (isLoading) return "loading"
-  if (!layouts) return "error no layouts"
+  if (!soups) return "error no soups"
 
-  const selected_layout = layouts?.[selected_layout_index]
+  const selected_layout = soups?.[selected_layout_index]
 
   return (
     <div>
       <div style={{ display: "flex", paddingBottom: 10 }}>
-        {layouts.map((layout, i) => (
+        {soups.map((content, i) => (
           <button
             disabled={i === selected_layout_index}
             style={{ marginRight: 10 }}
-            key={layout.layout_name}
+            key={content.soup_name}
             onClick={() => {
               updateHashParams({ selected_layout_index: i })
             }}
           >
-            {layout.layout_name}
+            {content.soup_name}
           </button>
         ))}
         <div style={{ flexGrow: 1 }}></div>
@@ -69,13 +69,13 @@ export default () => {
       {selected_layout && (
         <>
           {selected_engine === "debug_renderer" && (
-            <DebugLayout layout={selected_layout.layout} />
+            <DebugLayout soup={selected_layout.content} />
           )}
           {selected_engine === "pcb_renderer" && (
-            <PCBLayout layout={selected_layout.layout} />
+            <PCBLayout soup={selected_layout.content} />
           )}
           {selected_engine === "schematic_renderer" && (
-            <DebugLayout layout={selected_layout.layout} />
+            <DebugLayout soup={selected_layout.content} />
           )}
         </>
       )}
