@@ -5,7 +5,7 @@ export default () => {
   const { data: { layout_groups } = {}, isLoading } = useQuery({
     queryKey: "layout_groups",
     queryFn: () =>
-      fetch("/api/layout_group/list").then(
+      fetch("/api/soup_group/list").then(
         (res) =>
           res.json() as Promise<{
             layout_groups: Array<{ layout_group_name: string }>
