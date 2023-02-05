@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "next dev -p 4011",
-    "build:openapi": "nextlove generate-openapi --packageDir . --outputFile public/openapi.json --pathGlob '/src/pages/api/**/*.ts'"
+    "build": "next build && next export"
   },
   "devDependencies": {
     "@tscircuit/builder": "^1.0.10",
