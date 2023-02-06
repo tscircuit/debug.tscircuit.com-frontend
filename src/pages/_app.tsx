@@ -1,5 +1,6 @@
 import React from "react"
 import { QueryClient, QueryClientProvider, useQuery } from "react-query"
+import "./styles.css"
 
 const queryClient = new QueryClient()
 

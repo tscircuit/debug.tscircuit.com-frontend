@@ -55,7 +55,7 @@ export default ({ soup }: { soup: Soup }) => {
         ref={ref}
         style={{
           position: "relative",
-          backgroundColor: "#eee",
+          backgroundColor: "#222426",
           height: 600,
           overflow: "hidden",
         }}

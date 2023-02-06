@@ -39,7 +39,12 @@ export default () => {
 
   return (
     <div>
-      <div style={{ display: "flex", paddingBottom: 10 }}>
+      <div
+        style={{
+          display: "flex",
+          paddingBottom: 10,
+        }}
+      >
         {soups.map((content, i) => (
           <button
             disabled={i === selected_layout_index}

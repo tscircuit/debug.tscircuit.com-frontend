@@ -44,6 +44,7 @@ export default ({
           position: "absolute",
           display: hovering ? "block" : "none",
           pointerEvents: "none",
+          color: "#ddd",
           fontSize: 11,
         }}
       >
