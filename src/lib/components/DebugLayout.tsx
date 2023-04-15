@@ -12,6 +12,7 @@ import {
   flipY,
 } from "transformation-matrix"
 import LayoutObject from "./LayoutObject"
+import { MouseIndicator } from "./MouseIndicator"
 
 const defaultTransform = compose(
   identity(),
@@ -75,6 +76,7 @@ export default ({ soup }: { soup: Soup }) => {
           .map((obj, i) => (
             <LayoutObject obj={obj} key={(obj as any).key} />
           ))}
+        <MouseIndicator containerRef={ref} transform={transform} />
       </div>
       <details style={{ marginTop: 20 }}>
         <summary>Layout JSON</summary>
