@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import DebugLayout from "lib/components/DebugLayout"
 import { useHashParams } from "lib/hooks/use-hash-params"
 import PCBLayout from "lib/components/PCBLayout"
+import { Schematic } from "@tscircuit/schematic-viewer"
 
 const ENGINES = ["debug_renderer", "pcb_renderer", "schematic_renderer"]
 
@@ -80,7 +81,7 @@ export default () => {
             <PCBLayout soup={selected_layout.content} />
           )}
           {selected_engine === "schematic_renderer" && (
-            <DebugLayout soup={selected_layout.content} />
+            <Schematic elements={selected_layout.content.elements} />
           )}
         </>
       )}
