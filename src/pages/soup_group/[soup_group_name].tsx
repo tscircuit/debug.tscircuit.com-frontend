@@ -81,7 +81,10 @@ export default () => {
             <PCBLayout soup={selected_layout.content} />
           )}
           {selected_engine === "schematic_renderer" && (
-            <Schematic elements={selected_layout.content.elements} />
+            <Schematic
+              style={{ height: 500 }}
+              elements={selected_layout.content.elements}
+            />
           )}
         </>
       )}
