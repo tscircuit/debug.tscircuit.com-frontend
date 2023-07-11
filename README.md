@@ -1,8 +1,8 @@
 # debug.tscircuit.com frontend
 
-This is the frontend component of [debug.tscircuit.com](https://debug.tscircuit.com)
+> Also see the [backend api](https://github.com/tscircuit/debug.tscircuit.com-backend)
 
-> Also see the [backend component](https://github.com/tscircuit/)
+This is the frontend component of [debug.tscircuit.com](https://debug.tscircuit.com)
 
 ## Development
 
