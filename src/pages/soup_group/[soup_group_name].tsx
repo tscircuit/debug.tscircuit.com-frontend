@@ -59,6 +59,14 @@ export default () => {
           </button>
         ))}
         <div style={{ flexGrow: 1 }}></div>
+        <button
+          onClick={() => {
+            const copyText = selected_layout.content
+            navigator.clipboard.writeText(JSON.stringify(copyText, null, 2))
+          }}
+        >
+          Copy Current Soup
+        </button>
         {ENGINES.map((engine) => (
           <button
             style={{ marginLeft: 10 }}
