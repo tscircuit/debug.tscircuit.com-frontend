@@ -8,6 +8,10 @@
       "packagePatterns": ["*"],
       "excludePackagePatterns": ["@tscircuit/*"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "automerge": true
     }
   ]
 }
