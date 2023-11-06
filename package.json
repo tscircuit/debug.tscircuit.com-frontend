@@ -9,7 +9,7 @@
     "build": "next build && next export"
   },
   "devDependencies": {
-    "@tscircuit/react-fiber": "^0.0.5",
+    "@tscircuit/react-fiber": "^1.0.0",
     "@types/better-sqlite3": "^7.6.2",
     "@types/http-proxy": "^1.17.9",
     "@types/react": "^18.0.25",
