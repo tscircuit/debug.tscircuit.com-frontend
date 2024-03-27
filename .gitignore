@@ -12,3 +12,5 @@ yarn-error.log
 yalc.lock
 *.sqlite
 out
+
+.deeper
