@@ -6,10 +6,11 @@
   "license": "MIT",
   "scripts": {
     "start": "next dev -p 4011",
-    "build": "next build && next export"
+    "build": "next build && next export",
+    "update-deps": "npm add @tscircuit/react-fiber@latest @tscircuit/builder@latest @tscircuit/pcb-viewer@latest @tscircuit/schematic-viewer@latest"
   },
   "devDependencies": {
-    "@tscircuit/react-fiber": "^1.0.0",
+    "@tscircuit/react-fiber": "^1.0.12",
     "@types/better-sqlite3": "^7.6.2",
     "@types/http-proxy": "^1.17.9",
     "@types/react": "^18.0.25",
@@ -20,13 +21,13 @@
     "zapatos": "^6.1.1"
   },
   "dependencies": {
-    "@tscircuit/builder": "^1.3.0",
-    "@tscircuit/pcb-viewer": "^1.2.8",
     "@react-hook/mouse-position": "^4.1.3",
     "@sindresorhus/string-hash": "^2.0.0",
-    "@tscircuit/schematic-viewer": "^1.0.3",
+    "@tscircuit/builder": "^1.5.12",
+    "@tscircuit/pcb-viewer": "^1.2.14",
+    "@tscircuit/schematic-viewer": "^1.1.10",
     "axios": "^1.3.2",
-    "better-sqlite3": "^7.6.2",
+    "better-sqlite3": "^9.4.3",
     "color-alpha": "^1.1.3",
     "http-proxy": "^1.18.1",
     "kysely": "^0.22.0",
