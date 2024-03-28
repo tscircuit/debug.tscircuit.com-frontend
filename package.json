@@ -2,6 +2,7 @@
   "name": "layout-tester",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "author": "seveibar <seveibar@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -16,15 +17,15 @@
     "@types/react": "^18.0.25",
     "esbuild-register": "^3.3.3",
     "prettier": "^2.7.1",
-    "typescript": "^4.8.4",
+    "typescript": "^5.4.3",
     "zapatos": "^6.1.1"
   },
   "dependencies": {
     "@react-hook/mouse-position": "^4.1.3",
     "@sindresorhus/string-hash": "^2.0.0",
-    "@tscircuit/builder": "^1.5.12",
+    "@tscircuit/builder": "^1.5.20",
     "@tscircuit/pcb-viewer": "^1.2.14",
-    "@tscircuit/schematic-viewer": "^1.1.10",
+    "@tscircuit/schematic-viewer": "^1.1.13",
     "axios": "^1.3.2",
     "color-alpha": "^1.1.3",
     "http-proxy": "^1.18.1",
