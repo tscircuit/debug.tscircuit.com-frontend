@@ -6,7 +6,7 @@
   "author": "seveibar <seveibar@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "next dev -p 4011",
+    "start": "DEV_MODE=1 next dev -p 4011",
     "build": "next build",
     "update-deps": "npm add @tscircuit/react-fiber@latest @tscircuit/builder@latest @tscircuit/pcb-viewer@latest @tscircuit/schematic-viewer@latest"
   },
