@@ -38,7 +38,6 @@ export default () => {
   if (!soups) return "error no soups"
 
   const selected_layout = soups?.[selected_layout_index]
-  console.log({ selected_layout, builder, cloneDeep: builder.cloneDeep })
 
   return (
     <div>
