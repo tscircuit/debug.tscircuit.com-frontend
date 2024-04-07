@@ -57,7 +57,7 @@ export default ({ soup }: { soup: Soup }) => {
         style={{
           position: "relative",
           backgroundColor: "#222426",
-          height: 600,
+          height: window.innerHeight ? window.innerHeight - 200 : 600,
           overflow: "hidden",
         }}
       >

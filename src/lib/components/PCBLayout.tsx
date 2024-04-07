@@ -21,7 +21,7 @@ export default ({ soup }: { soup: Soup }) => {
           key={refDimensions.width}
           elements={soup.elements as any}
           transform={transform}
-          height={600}
+          height={window.innerHeight ?? 600}
           width={refDimensions.width}
           grid={{
             spacing: 1,
