@@ -6,8 +6,15 @@ import { useHashParams } from "lib/hooks/use-hash-params"
 import PCBLayout from "lib/components/PCBLayout"
 import { Schematic } from "@tscircuit/schematic-viewer"
 import * as builder from "@tscircuit/builder"
+import { SoupTableViewer } from "@tscircuit/table-viewer"
+import "react-data-grid/lib/styles.css"
 
-const ENGINES = ["debug_renderer", "pcb_renderer", "schematic_renderer"]
+const ENGINES = [
+  "debug_renderer",
+  "pcb_renderer",
+  "schematic_renderer",
+  "table",
+]
 
 export default () => {
   const router = useRouter()
@@ -94,6 +101,17 @@ export default () => {
               style={{ height: 500 }}
               soup={selected_layout.content.elements}
             />
+          )}
+          {selected_engine === "table" && (
+            <div>
+              <SoupTableViewer
+                elements={selected_layout.content.elements as any}
+                height={
+                  typeof window !== "undefined" ? window.innerHeight - 50 : 800
+                }
+                appearance="dark"
+              />
+            </div>
           )}
         </>
       )}
