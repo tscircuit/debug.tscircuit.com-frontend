@@ -7,21 +7,18 @@ import PCBLayout from "lib/components/PCBLayout"
 import { Schematic } from "@tscircuit/schematic-viewer"
 import * as builder from "@tscircuit/builder"
 import { SoupTableViewer } from "@tscircuit/table-viewer"
+import { CadViewer } from "@tscircuit/3d-viewer"
 import "react-data-grid/lib/styles.css"
+import { ErrorBoundary } from "react-error-boundary"
 
-const ENGINES = [
-  "debug_renderer",
-  "pcb_renderer",
-  "schematic_renderer",
-  "table",
-]
+const ENGINES = ["debug_sch", "debug_pcb", "pcb", "schematic", "3d", "table"]
 
 export default () => {
   const router = useRouter()
 
   const [{ selected_engine, selected_layout_index }, updateHashParams] =
     useHashParams({
-      selected_engine: "debug_renderer",
+      selected_engine: "debug_sch",
       selected_layout_index: 0,
     })
   const { soup_group_name } = router.query
@@ -90,17 +87,48 @@ export default () => {
       </div>
       {selected_layout && (
         <>
-          {selected_engine === "debug_renderer" && (
-            <DebugLayout soup={selected_layout.content} />
+          {selected_engine === "debug_sch" && (
+            <DebugLayout
+              soup={
+                selected_layout.content?.elements?.filter(
+                  (elm) =>
+                    !elm?.type?.startsWith("pcb_") &&
+                    !elm?.type?.startsWith("cad_")
+                ) ?? []
+              }
+            />
           )}
-          {selected_engine === "pcb_renderer" && (
+          {selected_engine === "debug_pcb" && (
+            <DebugLayout
+              soup={
+                selected_layout.content?.elements?.filter(
+                  (elm) =>
+                    !elm?.type?.startsWith("schematic_") &&
+                    !elm?.type?.startsWith("cad_")
+                ) ?? []
+              }
+            />
+          )}
+          {selected_engine === "pcb" && (
             <PCBLayout soup={selected_layout.content} />
           )}
-          {selected_engine === "schematic_renderer" && (
+          {selected_engine === "schematic" && (
             <Schematic
               style={{ height: 500 }}
               soup={selected_layout.content.elements}
             />
+          )}
+          {selected_engine === "3d" && (
+            <ErrorBoundary
+              fallbackRender={(props) => (
+                <div>
+                  <h1>Something went wrong rendering 3d viewer</h1>
+                  <pre>{props.error.message}</pre>
+                </div>
+              )}
+            >
+              <CadViewer soup={selected_layout.content.elements} />
+            </ErrorBoundary>
           )}
           {selected_engine === "table" && (
             <div>
