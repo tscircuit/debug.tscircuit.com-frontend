@@ -127,7 +127,13 @@ export default () => {
                 </div>
               )}
             >
-              <CadViewer soup={selected_layout.content.elements} />
+              <div
+                style={{
+                  height: window.innerHeight ? window.innerHeight - 200 : 600,
+                }}
+              >
+                <CadViewer soup={selected_layout.content.elements} />
+              </div>
             </ErrorBoundary>
           )}
           {selected_engine === "table" && (
