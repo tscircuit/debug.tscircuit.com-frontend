@@ -80,7 +80,7 @@ export default ({ soup }: { soup: Soup }) => {
       </div>
       <details style={{ marginTop: 20 }}>
         <summary>Layout JSON</summary>
-        <pre>{JSON.stringify(soup.elements, null, 2)}</pre>
+        <pre>{JSON.stringify(soup, null, 2)}</pre>
       </details>
     </div>
   )

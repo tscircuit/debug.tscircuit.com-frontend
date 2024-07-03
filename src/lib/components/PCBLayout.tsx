@@ -19,7 +19,7 @@ export default ({ soup }: { soup: Soup }) => {
       <div ref={ref as any}>
         <PCBViewer
           key={refDimensions.width}
-          soup={soup.elements as any}
+          soup={soup}
           height={window.innerHeight ? window.innerHeight - 100 : 600}
         />
       </div>

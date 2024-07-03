@@ -110,7 +110,7 @@ export default () => {
             />
           )}
           {selected_engine === "pcb" && (
-            <PCBLayout soup={selected_layout.content} />
+            <PCBLayout soup={selected_layout.content?.elements} />
           )}
           {selected_engine === "schematic" && (
             <Schematic
