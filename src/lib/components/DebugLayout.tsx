@@ -25,7 +25,7 @@ const defaultTransform = compose(
  * Type order, if earlier renders ABOVE later elements, meaning things at the
  * beginning are stacked on top of things at the end.
  */
-const TYPE_ORDER = ["default", "schematic_box", "schematic_line"]
+const TYPE_ORDER = ["default", "schematic_box", "schematic_line", "pcb_board"]
 const DEFAULT_TYPE_IND = TYPE_ORDER.indexOf("default")
 const getTypeInd = (type: string) => {
   const ind = TYPE_ORDER.indexOf(type)
@@ -41,7 +41,7 @@ export default ({ soup }: { soup: Soup }) => {
     onSetTransform: setTransform,
   })
 
-  const layout_objects = [...soup.elements]
+  const layout_objects = [...soup]
 
   // order based on type order
   layout_objects.sort((a, b) => {
@@ -80,7 +80,7 @@ export default ({ soup }: { soup: Soup }) => {
       </div>
       <details style={{ marginTop: 20 }}>
         <summary>Layout JSON</summary>
-        <pre>{JSON.stringify(soup.elements, null, 2)}</pre>
+        <pre>{JSON.stringify(soup, null, 2)}</pre>
       </details>
     </div>
   )
