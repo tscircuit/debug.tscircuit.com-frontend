@@ -129,7 +129,7 @@ export default () => {
             >
               <div
                 style={{
-                  height: window.innerHeight ? window.innerHeight - 200 : 600,
+                  height: window.innerHeight ? window.innerHeight - 30 : 600,
                 }}
               >
                 <CadViewer soup={selected_layout.content.elements} />

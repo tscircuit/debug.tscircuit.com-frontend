@@ -11,6 +11,7 @@
     "update-deps": "npm add @tscircuit/react-fiber@latest @tscircuit/builder@latest @tscircuit/pcb-viewer@latest @tscircuit/schematic-viewer@latest"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
     "@tscircuit/react-fiber": "^1.0.39",
     "@types/better-sqlite3": "^7.6.2",
     "@types/http-proxy": "^1.17.9",
