@@ -4,6 +4,8 @@
 
 This is the frontend component of [debug.tscircuit.com](https://debug.tscircuit.com)
 
+The debug frontend helps you visualize [tscircuit soup json](https://docs.tscircuit.com/api-reference/advanced/soup) in 3d, schematic, pcb, debug and table views.
+
 ## Development
 
 1. `npm install`
