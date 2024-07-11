@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "DEV_MODE=1 next dev -p 4011",
-    "build": "npx next build",
+    "build": "next build",
     "update-deps": "npm add @tscircuit/react-fiber@latest @tscircuit/builder@latest @tscircuit/pcb-viewer@latest @tscircuit/schematic-viewer@latest"
   },
   "devDependencies": {
