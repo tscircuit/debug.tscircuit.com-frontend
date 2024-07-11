@@ -7,6 +7,14 @@ const nextConfig = {
     config.resolve.fallback = { fs: false }
     return config
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://debug.tscircuit.com/api/:path*',
+      },
+    ];
+  },
 }
 
 export default nextConfig
