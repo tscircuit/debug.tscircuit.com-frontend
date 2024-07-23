@@ -13,7 +13,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@tscircuit/3d-viewer": "^0.0.13",
-    "@tscircuit/builder": "^1.5.144",
+    "@tscircuit/builder": "^1.5.149",
     "@tscircuit/react-fiber": "^1.0.39",
     "@tscircuit/soup-util": "^0.0.13",
     "@types/better-sqlite3": "^7.6.2",

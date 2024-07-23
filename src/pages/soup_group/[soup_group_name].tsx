@@ -22,7 +22,10 @@ export default () => {
       selected_layout_index: 0,
     })
   const { soup_group_name } = router.query
-  const { data: { soups } = {}, isLoading } = useQuery({
+  const {
+    data: { soups } = {},
+    isLoading,
+  } = useQuery({
     queryKey: ["soup_group", soup_group_name],
     queryFn: () =>
       fetch(`/api/soup_group/get?soup_group_name=${soup_group_name}`).then(
@@ -33,7 +36,7 @@ export default () => {
               soup_name: string
               content: any
             }>
-          }>
+          }>,
       ),
     refetchInterval: 500,
   })
@@ -93,7 +96,7 @@ export default () => {
                 selected_layout.content?.elements?.filter(
                   (elm) =>
                     !elm?.type?.startsWith("pcb_") &&
-                    !elm?.type?.startsWith("cad_")
+                    !elm?.type?.startsWith("cad_"),
                 ) ?? []
               }
             />
@@ -104,7 +107,7 @@ export default () => {
                 selected_layout.content?.elements?.filter(
                   (elm) =>
                     !elm?.type?.startsWith("schematic_") &&
-                    !elm?.type?.startsWith("cad_")
+                    !elm?.type?.startsWith("cad_"),
                 ) ?? []
               }
             />
