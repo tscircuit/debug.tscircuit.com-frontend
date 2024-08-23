@@ -28,7 +28,9 @@ export default () => {
   } = useQuery({
     queryKey: ["soup_group", soup_group_name],
     queryFn: () =>
-      fetch(`/api/soup_group/get?soup_group_name=${soup_group_name}`).then(
+      fetch(
+        `/api/soup_group/get?soup_group_name=${decodeURIComponent(soup_group_name as string)}`,
+      ).then(
         (res) =>
           res.json() as Promise<{
             soups: Array<{
