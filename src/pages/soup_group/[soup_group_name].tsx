@@ -22,6 +22,7 @@ export default () => {
       selected_layout_index: 0,
     })
   const { soup_group_name } = router.query
+  // soup_group_name = (soup_group_name as string).replace(/%25/g, "")
   const {
     data: { soups } = {},
     isLoading,
@@ -49,7 +50,14 @@ export default () => {
   const selected_layout = soups?.[selected_layout_index]
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor:
+          selected_engine === "schematic" || selected_engine === "3d"
+            ? "#fff"
+            : "none",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -119,7 +127,7 @@ export default () => {
           )}
           {selected_engine === "schematic" && (
             <Schematic
-              style={{ height: 500 }}
+              style={{ height: 700 }}
               soup={selected_layout.content.elements}
             />
           )}

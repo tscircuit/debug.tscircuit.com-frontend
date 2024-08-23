@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export const useHashParams = <T extends Object>(
-  defaults: T
+  defaults: T,
 ): [T, (m: Partial<T>) => void] => {
   if (typeof window === "undefined") {
     return [defaults, () => {}]
@@ -25,7 +25,7 @@ export const useHashParams = <T extends Object>(
         JSON.stringify({
           ...current_hash_obj,
           ...mergeObj,
-        })
+        }),
       )
       triggerUpdate(updateIndex + 1)
     },
