@@ -11,7 +11,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://debug.tscircuit.com/api/:path*',
+        destination: 'https://debug-api.tscircuit.com/api/:path*',
       },
     ];
   },
